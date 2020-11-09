@@ -7,3 +7,5 @@ services:
         image: angular-web
         ports: 
             - "4200:4200"
+        logging: 
+            driver: none
