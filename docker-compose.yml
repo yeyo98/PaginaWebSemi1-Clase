@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+    FrontEnd:
+        container_name: PaginaWeb
+        restart: always
+        build: ./
+        image: angular-web
+        ports: 
+            - "4200:4200"

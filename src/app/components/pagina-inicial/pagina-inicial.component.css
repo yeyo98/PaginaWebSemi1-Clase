@@ -1,0 +1,27 @@
+.index-intro{
+    width: 100%;
+    background-color: #f3f3f3;
+}
+
+.index-intro .jumbotron{
+    /*padding: 100px 60px;
+    margin: 0px;*/
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.navbar-brand {
+  padding:0 !important;
+}
+
+.img-responsive2 {
+    position: relative;
+    height: 100%;
+  }
+
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }

@@ -1,0 +1,120 @@
+<!--<article class="index-intro">
+    <div class ="container">
+        <div class="jumbotron row">
+            <div class="col-sm-8">
+            <img src="https://semi1-proyectoclase.s3.us-east-2.amazonaws.com/ArchivoPaginaWeb/Logo.gif">
+            </div>
+        </div>
+    </div>
+</article>-->
+
+<!-- Image and text -->
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+        <img src="https://semi1-proyectoclase.s3.us-east-2.amazonaws.com/ArchivoPaginaWeb/Logo.gif" 
+        width="70%"  class="d-inline-block align-top " alt="">
+    </a>
+  </nav>
+
+<div class="container">
+    
+    <div class="row">
+        <div class="col">
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-primary" (click)="mostrarTextArea()">Escribir</button>
+                <button type="button" class="btn btn-success" (click)="mostrarPdf()">Cargar PDF</button>
+            </div>
+            
+            <div class="row">
+                <hr class="my-4">
+                <div class="col-8">
+                    <hr class="my-4">
+                    <!-- SECCION PARA TRABAJAR CON AREA TEXT -->
+                    <div *ngIf="estadoTextArea">
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Escriba su texto</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                [(ngModel)]="textArea" name="textArea"
+                            ></textarea>
+                        </div>
+                    </div>
+                    <!-- SECCION PARA TRABAJAR CON PDF'S -->
+                    <div *ngIf = "estadoPdf">
+                        <div class="input-group row">
+                            <div class="input-group-prepend">
+                            </div>
+                            <div class="custom-file col-6">
+                                <input type="file" class="form-control-file" id="exampleFormControlFile1" (change)="onChange($event)">
+                            </div>
+                          </div>
+            
+                        <div class="pdf-container">
+                            <pdf-viewer [src]="getUrlPDF()"
+                                        [original-size]="false"
+                            ></pdf-viewer>
+                          </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <hr class="my-4">
+                    <div *ngIf="estadoTextArea || estadoPdf">
+                        <div class="row">
+                            <div class="col-3">
+                                <div ngbDropdown class="d-inline-block">
+                                    <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Idiomas</button>
+                                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                        <button ngbDropdownItem *ngFor="let a of idiomas" (click)="capturarIdioma(a)">
+                                            {{a}}
+                                        </button>
+                                    </div>
+                                  </div>
+                            </div>
+                            <div class="col-3">
+                                {{verSeleccion}}
+                            </div>
+                            <div class="col-3">
+                                <div *ngIf="tipoVoz" ngbDropdown class="d-inline-block">
+                                    <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Voz</button>
+                                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                        <button ngbDropdownItem *ngFor="let a of vocesEspaniol" (click)="capturarVoz(a)">
+                                            {{a}}
+                                        </button>
+                                    </div>
+                                  </div>
+                                <div *ngIf="!tipoVoz" ngbDropdown class="d-inline-block">
+                                    <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Voz</button>
+                                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                        <button ngbDropdownItem *ngFor="let a of vocesIngles" (click)="capturarVoz(a)">
+                                            {{a}}
+                                        </button>
+                                    </div>
+                                  </div>
+                            </div>
+                            <div class="col-3">
+                                {{verVoz}}
+                            </div>
+
+                            
+                          </div>
+                          <hr class="my-4">
+                          <div class=row>
+                              <div class="col">
+                                <button (click)="ObtenerSonido()" class="btn btn-lg" style="background-color:blue;">
+                                  <i class="fas fa-volume-up fa-lg" style="color:white;"></i>
+                               </button>
+
+                              </div>
+                              <div class="col">
+                                <audio controls [src]='rutaSonido' type="audio/mp3">
+                                    Your browser does not support the <code>audio</code> element.
+                                </audio>
+                              </div>
+                          </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+

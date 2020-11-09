@@ -1,0 +1,1 @@
+export const ipApp = 'http://18.218.106.169:4000';
